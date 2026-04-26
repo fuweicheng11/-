@@ -1,89 +1,88 @@
-# Camouflage Insect Web Demo
+# 伪装昆虫识别平台源码交接说明
 
-这是一个面向复杂自然背景的伪装昆虫识别 Web 平台，支持电脑端和手机端访问，提供主体分割、融合分类、证据图解释、科普信息、动态区、图鉴与管理员后台等功能。
+这个仓库是我现在这套伪装昆虫识别平台的源码版。
 
-当前仓库已经去掉了旧版 `CamouflageInsectWebDemo.exe` 分类依赖，识别链路完全运行在 Python 进程内：
+我先把最重要的话说前面：
 
-`上传图片 -> 分割模型提取主体 -> 裁切主体 -> ConvNeXt + DINOv2 融合分类 -> 返回证据图与科普信息`
+- GitHub 这里我只放源码，不放大模型权重，不放本地 MySQL 数据，不放真实 API Key。
+- 你如果想把项目直接跑起来，先去百度网盘把权重包拿下来，再按我下面的步骤做。
+- 当前版本已经去掉了老的 `CamouflageInsectWebDemo.exe` 依赖，现在分类和分割都在 Python 进程里跑。
 
-## 技术栈
+## 这个项目现在是干什么的
+
+这是一个面向复杂自然背景的伪装昆虫识别 Web 平台，电脑端和手机端都能访问。
+
+现在这套主链路是：
+
+`上传图片 -> 分割模型先提主体 -> 裁切主体 -> ConvNeXt + DINOv2 融合分类 -> 返回类别、证据图、科普信息`
+
+除了识别本身，这个项目里还有这些功能：
+
+- 结果页展示原图、分割图、热力图、定位框结果、局部热力图
+- 首页动态区
+- 分类图鉴
+- 用户登录、头像、历史记录
+- 管理员后台
+- DeepSeek 问答接口
+
+## 技术栈我也给你说清楚
 
 - 前端：Vue 3 + Vite + Element Plus
 - 后端：Flask
-- 分割模型：PyTorch 自定义分割网络，部署版以 ResNet50 为编码骨干
+- 分割模型：PyTorch 自定义分割网络，部署版编码骨干是 ResNet50
 - 分类模型：ConvNeXt-Base + DINOv2 + Gating Fusion
 - 数据存储：MySQL
-- 智能问答：DeepSeek 兼容接口，可留空不配置
+- 问答：DeepSeek 兼容接口，可不配
 
-## 这个仓库包含什么
+## GitHub 里有什么，没什么
 
-仓库包含：
+### 这个仓库里有的
 
 - 完整前后端源码
 - 前端构建配置
-- 分割与分类推理代码
 - 启动脚本
-- 分类图鉴、示例图片、业务文案
+- 示例图片
+- 图鉴数据和业务文案
+- 分割与分类推理代码
 
-仓库不包含：
+### 这个仓库里没有的
 
 - 分类权重 `runtime/CamouflageDriveQ/08/fusion_results/fusion_best.pth`
 - 分割权重 `segmentation/models/MODEL06_RUN_best.pth`
 - 本地 MySQL 数据目录
 - 本地日志
-- 真实 AI API Key
-- 前端 `node_modules`
-- 前端构建产物 `frontend/dist`
+- 真实 AI Key
+- `frontend/node_modules`
+- `frontend/dist`
 
-## 部署前必须下载的网盘资源
+所以你如果刚 clone 下来，不能指望它“裸跑就识别”，权重必须自己补回来。
 
-请从你的百度网盘资源中下载权重包，并解压到项目根目录。
+## 权重包去哪里拿
+
+我已经把部署必需的大文件单独放到百度网盘了。
 
 - 百度网盘链接：`https://pan.baidu.com/s/1-6FF0QzGhZPsVbIX7L2Rfw?pwd=1234`
 - 提取码：`1234`
 
-推荐你上传一个压缩包，包内保持如下相对路径：
+你下载下来后，直接把压缩包解压到项目根目录。压缩包里我已经把相对路径摆好了，正常情况下你不用自己手动搬文件。
+
+解压后你至少要确认这两个文件在：
 
 ```text
 runtime/CamouflageDriveQ/08/fusion_results/fusion_best.pth
 segmentation/models/MODEL06_RUN_best.pth
 ```
 
-只要解压后这两个文件落到上述位置，项目就能识别。
+这两个文件缺一个，识别都跑不起来。
 
-说明：
+补充说明：
 
 - `fusion_best.pth`：分类融合权重，必需
 - `MODEL06_RUN_best.pth`：分割权重，必需
-- `_internal/master/ConvNeXt-main/convnext_base_22k_224.pth`：不是当前部署版运行必需
-- `_internal/master/dinov2-main/dinov2_vitb14_reg4_pretrain.pth`：不是当前部署版运行必需
+- `_internal/master/ConvNeXt-main/convnext_base_22k_224.pth`：当前部署版不是必需
+- `_internal/master/dinov2-main/dinov2_vitb14_reg4_pretrain.pth`：当前部署版不是必需
 
-## 环境要求
-
-### Windows 本地运行
-
-推荐环境：
-
-- Python 3.10 - 3.12
-- Node.js 18+
-- MySQL 8.4
-- PowerShell 可用
-
-注意：
-
-- Windows 一键脚本默认寻找 `C:\Program Files\MySQL\MySQL Server 8.4`
-- 如果你的 MySQL 不在这个路径，请手动修改 `scripts/setup_local_mysql.ps1`
-
-### Linux / 服务器部署
-
-推荐环境：
-
-- Python 3.10 - 3.12
-- Node.js 18+
-- MySQL 8.x
-- Nginx
-
-## 首次部署步骤
+## 你按这个顺序跑，基本不会出错
 
 ### 1. 克隆仓库
 
@@ -92,22 +91,17 @@ git clone <your-repo-url>
 cd <repo-dir>
 ```
 
-### 2. 还原模型权重
+### 2. 先还原权重
 
-把百度网盘中的权重包解压到项目根目录，确认以下两个文件存在：
+把百度网盘里的权重包解压到项目根目录，确认上面说的两个 `.pth` 文件都在。
 
-```text
-runtime/CamouflageDriveQ/08/fusion_results/fusion_best.pth
-segmentation/models/MODEL06_RUN_best.pth
-```
-
-### 3. 安装 Python 依赖
+### 3. 装 Python 依赖
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. 安装前端依赖并构建
+### 4. 装前端依赖并构建
 
 ```bash
 cd frontend
@@ -116,9 +110,9 @@ npm run build
 cd ..
 ```
 
-### 5. 配置数据库
+### 5. 配数据库
 
-项目默认数据库配置如下：
+默认数据库配置就是下面这套：
 
 - host：`127.0.0.1`
 - port：`3306`
@@ -126,12 +120,12 @@ cd ..
 - password：`Camouflage@2026`
 - database：`camouflage_insect_app`
 
-你可以用两种方式之一：
+你有两种搞法：
 
-1. Windows 本地直接运行 `launch_mini_app.bat`，脚本会尝试自动初始化本地 MySQL
-2. 手动创建 MySQL 数据库，并复制 `runtime/mysql/app_db.example.json` 为 `runtime/mysql/app_db.json`
+1. Windows 本地直接跑 `launch_mini_app.bat`，脚本会尝试帮你把本地 MySQL 初始化好。
+2. 你自己手动建库，然后把 `runtime/mysql/app_db.example.json` 复制成 `runtime/mysql/app_db.json`，把里面参数改成你自己的。
 
-也可以直接使用环境变量覆盖：
+也可以直接用环境变量覆盖：
 
 - `CAMOUFLAGE_DB_HOST`
 - `CAMOUFLAGE_DB_PORT`
@@ -139,16 +133,16 @@ cd ..
 - `CAMOUFLAGE_DB_PASSWORD`
 - `CAMOUFLAGE_DB_NAME`
 
-### 6. 可选配置 AI 问答
+### 6. AI 问答想用就配，不想用可以先不配
 
-如果不配置 API Key，项目仍然可以运行，只是智能问答会退化为本地兜底回答。
+这个项目就算没有 AI Key，主识别链路还是能跑，只是问答会退化。
 
-配置方式：
+如果你要配：
 
-1. 复制 `runtime/ai_config.example.json` 为 `runtime/ai_config.json`
-2. 填入你自己的 Key
+1. 把 `runtime/ai_config.example.json` 复制成 `runtime/ai_config.json`
+2. 把你自己的 Key 填进去
 
-也可以直接使用环境变量：
+也可以直接用环境变量：
 
 - `CAMOUFLAGE_AI_PROVIDER`
 - `CAMOUFLAGE_AI_BASE`
@@ -157,9 +151,9 @@ cd ..
 - `DEEPSEEK_API_KEY`
 - `CAMOUFLAGE_AI_TEMPERATURE`
 
-## 启动方式
+## 启动方式我给你分开说
 
-### Windows 一键启动
+### Windows 本地最省事的启动方式
 
 ```bat
 launch_mini_app.bat
@@ -177,19 +171,19 @@ http://127.0.0.1:7863
 stop_mini_app.bat
 ```
 
-生成手机临时访问地址：
+如果你想临时给手机访问地址：
 
 ```bat
 launch_phone_access.bat
 ```
 
-### 通用手动启动
+### 手动启动
 
 ```bash
 python app.py
 ```
 
-### 生产环境启动
+### 服务器部署
 
 ```bash
 gunicorn -w 1 -b 127.0.0.1:7863 app:app
@@ -201,7 +195,9 @@ gunicorn -w 1 -b 127.0.0.1:7863 app:app
 waitress-serve --host=127.0.0.1 --port=7863 app:app
 ```
 
-## 前端开发
+生产环境建议你自己再挂 Nginx 做反代。
+
+## 如果你要改前端
 
 开发模式：
 
@@ -211,37 +207,50 @@ npm install
 npm run dev
 ```
 
-Vite 开发服务器会把 `/api` 等请求代理到 `http://127.0.0.1:7863`。
+Vite 会把 `/api` 这些请求代理到 `http://127.0.0.1:7863`。
 
-## 常见问题
+## 常见坑我提前帮你踩掉
 
-### 1. 页面能打开，但识别报错
+### 1. 页面能开，识别报错
 
-优先检查：
+先检查这几个最容易错的：
 
-- `fusion_best.pth` 是否放对位置
-- `MODEL06_RUN_best.pth` 是否放对位置
-- Python 依赖是否完整安装
+- `fusion_best.pth` 放没放对
+- `MODEL06_RUN_best.pth` 放没放对
+- Python 依赖有没有装全
 
 ### 2. 页面数据加载失败，提示 MySQL 连接不上
 
-检查：
+优先看：
 
-- MySQL 是否已启动
-- `runtime/mysql/app_db.json` 是否正确
-- 数据库 `camouflage_insect_app` 是否存在
+- MySQL 起没起
+- `runtime/mysql/app_db.json` 对不对
+- `camouflage_insect_app` 这个库在不在
 
-Windows 本地可以优先直接试：
+Windows 本地优先直接试：
 
 ```bat
 launch_mini_app.bat
 ```
 
-### 3. 问答功能不可用
+### 3. 问答功能不能用
 
-通常是没有配置 AI Key。这个不影响主识别链路。
+一般就是没配 AI Key。这个不影响识别主链路。
 
-## 项目结构
+### 4. 你想把仓库重新推 GitHub，但是怕把大文件带上去
+
+不用担心，我已经在 `.gitignore` 里把这些排掉了：
+
+- 模型权重
+- MySQL 数据目录
+- 日志
+- 本地 AI 配置
+- `node_modules`
+- `frontend/dist`
+
+正常按现在这个仓库结构推，不会把那几个大东西带上去。
+
+## 目录结构你大概认一下
 
 ```text
 .
@@ -268,16 +277,22 @@ launch_mini_app.bat
 └─ stop_mini_app.bat
 ```
 
-## 发布说明
+## 最后我再强调一遍
 
-这个仓库适合公开托管源码和交接部署，不适合直接存放超大权重、数据库数据和真实 API 密钥。
+这个仓库现在适合做三件事：
 
-如果你要复现完整效果，正确流程是：
+- 源码公开托管
+- 交接给下一个人继续改
+- 拉到新机器上重新部署
 
-1. 克隆源码仓库
-2. 从百度网盘下载权重包
-3. 安装 Python / Node.js / MySQL
+你如果真要复现完整效果，正确顺序就五步：
+
+1. clone 源码
+2. 解压百度网盘里的权重包
+3. 装 Python / Node.js / MySQL
 4. 构建前端
 5. 启动项目
 
-按本 README 操作，接手者可以完成完整部署。
+别跳步骤，尤其别忘了先补权重。
+
+按我这个 README 走，正常就能把项目拉起来。

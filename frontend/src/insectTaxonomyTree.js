@@ -1,0 +1,678 @@
+export const taxonomyDirectoryMap = {
+  archaeognatha: [
+    {
+      id: 'machilidae',
+      family_cn: '石蛃科',
+      family_en: 'Bristletail family',
+      family_latin: 'Machilidae',
+      summary: '原始无翅昆虫的代表支系，体表具鳞片，善于在岩面和海岸石缝快速弹跳。',
+      cover_image: '/insect-taxonomy/petrobius-maritimus.jpg',
+      species: [
+        {
+          name_cn: '海滨石蛃',
+          name_en: 'Marine Bristletail',
+          latin: 'Petrobius maritimus',
+          image: '/insect-taxonomy/petrobius-maritimus.jpg',
+          url: 'https://en.wikipedia.org/wiki/Petrobius_maritimus',
+        },
+      ],
+    },
+  ],
+  zygentoma: [
+    {
+      id: 'lepismatidae',
+      family_cn: '衣鱼科',
+      family_en: 'Silverfish family',
+      family_latin: 'Lepismatidae',
+      summary: '多栖息于潮湿暗角，是家居环境中最常见的无翅昆虫类群。',
+      cover_image: '/insect-taxonomy/silverfish.jpg',
+      species: [
+        {
+          name_cn: '衣鱼',
+          name_en: 'Silverfish',
+          latin: 'Lepisma saccharinum',
+          image: '/insect-taxonomy/lepisma-saccharinum.jpg',
+          url: 'https://en.wikipedia.org/wiki/Lepisma_saccharinum',
+        },
+        {
+          name_cn: '火衣鱼',
+          name_en: 'Firebrat',
+          latin: 'Thermobia domestica',
+          image: '/insect-taxonomy/thermobia-domestica.jpg',
+          url: 'https://en.wikipedia.org/wiki/Thermobia_domestica',
+        },
+      ],
+    },
+  ],
+  ephemeroptera: [
+    {
+      id: 'ephemeridae',
+      family_cn: '蜉蝣科',
+      family_en: 'Mayfly family',
+      family_latin: 'Ephemeridae',
+      summary: '成虫翅面轻薄、尾丝细长，是淡水生态监测中很重要的一支。',
+      cover_image: '/insect-taxonomy/mayfly.jpg',
+      species: [
+        {
+          name_cn: '丹麦蜉蝣',
+          name_en: 'Green Drake',
+          latin: 'Ephemera danica',
+          image: '/insect-taxonomy/ephemera-danica.jpg',
+          url: 'https://en.wikipedia.org/wiki/Ephemera_danica',
+        },
+      ],
+    },
+    {
+      id: 'burrowing-mayflies',
+      family_cn: '掘穴蜉蝣类群',
+      family_en: 'Burrowing mayflies',
+      family_latin: 'Hexagenia',
+      summary: '若虫多栖于河湖底泥，成虫羽化时常形成明显的季节性群飞景象。',
+      cover_image: '/insect-taxonomy/hexagenia-limbata.jpg',
+      species: [
+        {
+          name_cn: '巨蜉蝣',
+          name_en: 'Hexagenia',
+          latin: 'Hexagenia limbata',
+          image: '/insect-taxonomy/hexagenia-limbata.jpg',
+          url: 'https://en.wikipedia.org/wiki/Hexagenia_limbata',
+        },
+      ],
+    },
+  ],
+  odonata: [
+    {
+      id: 'aeshnidae',
+      family_cn: '蜓科',
+      family_en: 'Hawker family',
+      family_latin: 'Aeshnidae',
+      summary: '大型蜻蜓类群，飞行能力强，常见于池塘与湿地区域上空巡飞。',
+      cover_image: '/insect-taxonomy/anax-imperator.jpg',
+      species: [
+        {
+          name_cn: '皇蜻',
+          name_en: 'Emperor Dragonfly',
+          latin: 'Anax imperator',
+          image: '/insect-taxonomy/anax-imperator.jpg',
+          url: 'https://en.wikipedia.org/wiki/Anax_imperator',
+        },
+      ],
+    },
+    {
+      id: 'calopterygidae',
+      family_cn: '丽翅蜻科',
+      family_en: 'Demoiselle family',
+      family_latin: 'Calopterygidae',
+      summary: '体色华丽、停驻时双翅多并拢，是溪流边很醒目的豆娘类群。',
+      cover_image: '/insect-taxonomy/calopteryx-splendens.jpg',
+      species: [
+        {
+          name_cn: '丽豆娘',
+          name_en: 'Banded Demoiselle',
+          latin: 'Calopteryx splendens',
+          image: '/insect-taxonomy/calopteryx-splendens.jpg',
+          url: 'https://en.wikipedia.org/wiki/Calopteryx_splendens',
+        },
+      ],
+    },
+  ],
+  plecoptera: [
+    {
+      id: 'pteronarcyidae',
+      family_cn: '巨石蝇科',
+      family_en: 'Giant stoneflies',
+      family_latin: 'Pteronarcyidae',
+      summary: '若虫对高溶氧溪流非常依赖，经常被作为水质优良的指示性昆虫。',
+      cover_image: '/insect-taxonomy/pteronarcys-californica.jpg',
+      species: [
+        {
+          name_cn: '大鲑石蝇',
+          name_en: 'Giant Salmonfly',
+          latin: 'Pteronarcys californica',
+          image: '/insect-taxonomy/pteronarcys-californica.jpg',
+          url: 'https://en.wikipedia.org/wiki/Pteronarcys_californica',
+        },
+      ],
+    },
+  ],
+  blattodea: [
+    {
+      id: 'blattidae',
+      family_cn: '蜚蠊类群',
+      family_en: 'Cockroach lineage',
+      family_latin: 'Blattidae',
+      summary: '适应力强、杂食性明显，是城市和野外环境都很常见的一类昆虫。',
+      cover_image: '/insect-taxonomy/periplaneta-americana.jpg',
+      species: [
+        {
+          name_cn: '美洲大蠊',
+          name_en: 'American Cockroach',
+          latin: 'Periplaneta americana',
+          image: '/insect-taxonomy/periplaneta-americana.jpg',
+          url: 'https://en.wikipedia.org/wiki/Periplaneta_americana',
+        },
+      ],
+    },
+    {
+      id: 'termitidae',
+      family_cn: '白蚁类群',
+      family_en: 'Termite lineage',
+      family_latin: 'Termitidae',
+      summary: '具有高度社会性，会建巢分工，在木材分解和生态工程中都很重要。',
+      cover_image: '/insect-taxonomy/macrotermes-bellicosus.jpg',
+      species: [
+        {
+          name_cn: '非洲大白蚁',
+          name_en: 'African Termite',
+          latin: 'Macrotermes bellicosus',
+          image: '/insect-taxonomy/macrotermes-bellicosus.jpg',
+          url: 'https://en.wikipedia.org/wiki/Macrotermes_bellicosus',
+        },
+      ],
+    },
+  ],
+  mantodea: [
+    {
+      id: 'mantidae',
+      family_cn: '大刀螳类群',
+      family_en: 'Typical mantises',
+      family_latin: 'Mantidae',
+      summary: '体型修长，前足发达，停伏在枝条和草叶上时具有很强的隐蔽性。',
+      cover_image: '/insect-taxonomy/mantis-religiosa.jpg',
+      species: [
+        {
+          name_cn: '欧洲螳螂',
+          name_en: 'European Mantis',
+          latin: 'Mantis religiosa',
+          image: '/insect-taxonomy/mantis-religiosa.jpg',
+          url: 'https://en.wikipedia.org/wiki/Mantis_religiosa',
+        },
+      ],
+    },
+    {
+      id: 'hymenopodidae',
+      family_cn: '花螳类群',
+      family_en: 'Flower mantises',
+      family_latin: 'Hymenopodidae',
+      summary: '以拟花、拟叶见长，常借助花色和轮廓完成伏击捕食。',
+      cover_image: '/insect-taxonomy/hymenopus-coronatus.jpg',
+      species: [
+        {
+          name_cn: '兰花螳螂',
+          name_en: 'Orchid Mantis',
+          latin: 'Hymenopus coronatus',
+          image: '/insect-taxonomy/hymenopus-coronatus.jpg',
+          url: 'https://en.wikipedia.org/wiki/Hymenopus_coronatus',
+        },
+      ],
+    },
+  ],
+  dermaptera: [
+    {
+      id: 'forficulidae',
+      family_cn: '蠼螋科',
+      family_en: 'Earwig family',
+      family_latin: 'Forficulidae',
+      summary: '尾钳明显，常活动于花盆、落叶和石缝环境中。',
+      cover_image: '/insect-taxonomy/forficula-auricularia.jpg',
+      species: [
+        {
+          name_cn: '普通蠼螋',
+          name_en: 'European Earwig',
+          latin: 'Forficula auricularia',
+          image: '/insect-taxonomy/forficula-auricularia.jpg',
+          url: 'https://en.wikipedia.org/wiki/Forficula_auricularia',
+        },
+      ],
+    },
+    {
+      id: 'anisolabididae',
+      family_cn: '扁尾蠼螋科',
+      family_en: 'Shore earwigs',
+      family_latin: 'Anisolabididae',
+      summary: '偏好潮湿海岸或河岸碎石带，是比较典型的耐盐耐潮蠼螋。',
+      cover_image: '/insect-taxonomy/anisolabis-maritima.png',
+      species: [
+        {
+          name_cn: '海岸蠼螋',
+          name_en: 'Maritime Earwig',
+          latin: 'Anisolabis maritima',
+          image: '/insect-taxonomy/anisolabis-maritima.png',
+          url: 'https://en.wikipedia.org/wiki/Anisolabis_maritima',
+        },
+      ],
+    },
+  ],
+  orthoptera: [
+    {
+      id: 'acrididae',
+      family_cn: '蝗科',
+      family_en: 'Short-horned grasshoppers',
+      family_latin: 'Acrididae',
+      summary: '触角相对较短，后足发达，是草地和农田里最常见的直翅类群之一。',
+      cover_image: '/insect-taxonomy/locusta-migratoria.jpg',
+      species: [
+        {
+          name_cn: '飞蝗',
+          name_en: 'Migratory Locust',
+          latin: 'Locusta migratoria',
+          image: '/insect-taxonomy/locusta-migratoria.jpg',
+          url: 'https://en.wikipedia.org/wiki/Locusta_migratoria',
+        },
+      ],
+    },
+    {
+      id: 'gryllidae',
+      family_cn: '蟋蟀科',
+      family_en: 'Cricket family',
+      family_latin: 'Gryllidae',
+      summary: '夜间鸣叫明显，体态敦实，常隐藏在草丛、土穴或落叶层中。',
+      cover_image: '/insect-taxonomy/gryllus-campestris.jpg',
+      species: [
+        {
+          name_cn: '田野蟋蟀',
+          name_en: 'Field Cricket',
+          latin: 'Gryllus campestris',
+          image: '/insect-taxonomy/gryllus-campestris.jpg',
+          url: 'https://en.wikipedia.org/wiki/Gryllus_campestris',
+        },
+      ],
+    },
+  ],
+  phasmatodea: [
+    {
+      id: 'stick-mimics',
+      family_cn: '枝拟态类群',
+      family_en: 'Stick mimics',
+      family_latin: 'Carausius',
+      summary: '依靠细长体型和缓慢摆动模仿枝条，是典型的枝条拟态昆虫。',
+      cover_image: '/insect-taxonomy/carausius-morosus.jpg',
+      species: [
+        {
+          name_cn: '印度竹节虫',
+          name_en: 'Indian Stick Insect',
+          latin: 'Carausius morosus',
+          image: '/insect-taxonomy/carausius-morosus.jpg',
+          url: 'https://en.wikipedia.org/wiki/Carausius_morosus',
+        },
+      ],
+    },
+    {
+      id: 'leaf-mimics',
+      family_cn: '叶拟态类群',
+      family_en: 'Leaf mimics',
+      family_latin: 'Phylliidae',
+      summary: '通过宽阔体态与叶脉状轮廓模仿叶片，是伪装识别中的明星类群。',
+      cover_image: '/insect-taxonomy/phyllium-philippinicum.jpg',
+      species: [
+        {
+          name_cn: '菲律宾叶䗛',
+          name_en: 'Philippine Leaf Insect',
+          latin: 'Phyllium philippinicum',
+          image: '/insect-taxonomy/phyllium-philippinicum.jpg',
+          url: 'https://en.wikipedia.org/wiki/Phyllium_philippinicum',
+        },
+      ],
+    },
+  ],
+  hemiptera: [
+    {
+      id: 'pentatomidae',
+      family_cn: '蝽类群',
+      family_en: 'Stink bugs',
+      family_latin: 'Pentatomidae',
+      summary: '盾形轮廓明显，多数为刺吸式植食者，也是农林观察中的常见对象。',
+      cover_image: '/insect-taxonomy/nezara-viridula.jpg',
+      species: [
+        {
+          name_cn: '南方绿蝽',
+          name_en: 'Southern Green Stink Bug',
+          latin: 'Nezara viridula',
+          image: '/insect-taxonomy/nezara-viridula.jpg',
+          url: 'https://en.wikipedia.org/wiki/Nezara_viridula',
+        },
+      ],
+    },
+    {
+      id: 'cicadidae',
+      family_cn: '蝉类群',
+      family_en: 'Cicadas',
+      family_latin: 'Cicadidae',
+      summary: '体型厚实、眼大翅透明，鸣叫声和地下若虫生活史都非常典型。',
+      cover_image: '/insect-taxonomy/magicicada-septendecim.jpg',
+      species: [
+        {
+          name_cn: '周期蝉',
+          name_en: 'Periodical Cicada',
+          latin: 'Magicicada septendecim',
+          image: '/insect-taxonomy/magicicada-septendecim.jpg',
+          url: 'https://en.wikipedia.org/wiki/Magicicada_septendecim',
+        },
+      ],
+    },
+  ],
+  thysanoptera: [
+    {
+      id: 'flower-thrips',
+      family_cn: '花蓟马类群',
+      family_en: 'Flower thrips',
+      family_latin: 'Thripidae',
+      summary: '常聚集在花器和嫩叶表面，对园艺植物与花卉生产影响明显。',
+      cover_image: '/insect-taxonomy/frankliniella-occidentalis.jpg',
+      species: [
+        {
+          name_cn: '西花蓟马',
+          name_en: 'Western Flower Thrips',
+          latin: 'Frankliniella occidentalis',
+          image: '/insect-taxonomy/frankliniella-occidentalis.jpg',
+          url: 'https://en.wikipedia.org/wiki/Frankliniella_occidentalis',
+        },
+      ],
+    },
+    {
+      id: 'onion-thrips',
+      family_cn: '葱蓟马类群',
+      family_en: 'Onion thrips',
+      family_latin: 'Thrips',
+      summary: '常见于葱蒜和蔬菜作物，体型虽小但对叶片危害很集中。',
+      cover_image: '/insect-taxonomy/thrips-tabaci.jpg',
+      species: [
+        {
+          name_cn: '葱蓟马',
+          name_en: 'Onion Thrips',
+          latin: 'Thrips tabaci',
+          image: '/insect-taxonomy/thrips-tabaci.jpg',
+          url: 'https://en.wikipedia.org/wiki/Thrips_tabaci',
+        },
+      ],
+    },
+  ],
+  psocodea: [
+    {
+      id: 'booklice',
+      family_cn: '书虱类群',
+      family_en: 'Booklice',
+      family_latin: 'Liposcelididae',
+      summary: '自由生活、个体微小，常见于储粮、纸张和粉状有机物周边。',
+      cover_image: '/insect-taxonomy/liposcelis-bostrychophila.jpg',
+      species: [
+        {
+          name_cn: '谷盗书虱',
+          name_en: 'Booklouse',
+          latin: 'Liposcelis bostrychophila',
+          image: '/insect-taxonomy/liposcelis-bostrychophila.jpg',
+          url: 'https://en.wikipedia.org/wiki/Liposcelis_bostrychophila',
+        },
+      ],
+    },
+    {
+      id: 'lice',
+      family_cn: '虱类群',
+      family_en: 'Lice',
+      family_latin: 'Pediculidae',
+      summary: '终生寄生于宿主体表，身体扁平、爪发达，适应寄生生活方式。',
+      cover_image: '/insect-taxonomy/pediculus-humanus-capitis.jpg',
+      species: [
+        {
+          name_cn: '头虱',
+          name_en: 'Head Louse',
+          latin: 'Pediculus humanus capitis',
+          image: '/insect-taxonomy/pediculus-humanus-capitis.jpg',
+          url: 'https://en.wikipedia.org/wiki/Pediculus_humanus_capitis',
+        },
+      ],
+    },
+  ],
+  neuroptera: [
+    {
+      id: 'chrysopidae',
+      family_cn: '草蛉科',
+      family_en: 'Green lacewings',
+      family_latin: 'Chrysopidae',
+      summary: '成虫翅面透明细密，幼虫捕食蚜虫能力强，是常见的天敌昆虫。',
+      cover_image: '/insect-taxonomy/chrysoperla-carnea.jpg',
+      species: [
+        {
+          name_cn: '绿草蛉',
+          name_en: 'Common Green Lacewing',
+          latin: 'Chrysoperla carnea',
+          image: '/insect-taxonomy/chrysoperla-carnea.jpg',
+          url: 'https://en.wikipedia.org/wiki/Chrysoperla_carnea',
+        },
+      ],
+    },
+    {
+      id: 'myrmeleontidae',
+      family_cn: '蚁蛉科',
+      family_en: 'Antlion family',
+      family_latin: 'Myrmeleontidae',
+      summary: '幼虫常筑漏斗陷阱捕食小型昆虫，成虫体态则近似细长蜻蛉。',
+      cover_image: '/insect-taxonomy/myrmeleon-formicarius.jpg',
+      species: [
+        {
+          name_cn: '蚁蛉',
+          name_en: 'Antlion',
+          latin: 'Myrmeleon formicarius',
+          image: '/insect-taxonomy/myrmeleon-formicarius.jpg',
+          url: 'https://en.wikipedia.org/wiki/Myrmeleon_formicarius',
+        },
+      ],
+    },
+  ],
+  coleoptera: [
+    {
+      id: 'coccinellidae',
+      family_cn: '瓢虫科',
+      family_en: 'Ladybird family',
+      family_latin: 'Coccinellidae',
+      summary: '体型圆拱、色斑醒目，多数是蚜虫的重要天敌，也是公众最熟悉的甲虫之一。',
+      cover_image: '/insect-taxonomy/coccinella-septempunctata.jpg',
+      species: [
+        {
+          name_cn: '七星瓢虫',
+          name_en: 'Seven-spotted Ladybird',
+          latin: 'Coccinella septempunctata',
+          image: '/insect-taxonomy/coccinella-septempunctata.jpg',
+          url: 'https://en.wikipedia.org/wiki/Coccinella_septempunctata',
+        },
+      ],
+    },
+    {
+      id: 'lucanidae',
+      family_cn: '锹甲科',
+      family_en: 'Stag beetle family',
+      family_latin: 'Lucanidae',
+      summary: '雄虫大颚发达，林地朽木环境中常见，是甲虫观察中的代表性类群。',
+      cover_image: '/insect-taxonomy/lucanus-cervus.jpg',
+      species: [
+        {
+          name_cn: '鹿角锹甲',
+          name_en: 'Stag Beetle',
+          latin: 'Lucanus cervus',
+          image: '/insect-taxonomy/lucanus-cervus.jpg',
+          url: 'https://en.wikipedia.org/wiki/Lucanus_cervus',
+        },
+      ],
+    },
+  ],
+  lepidoptera: [
+    {
+      id: 'papilionidae',
+      family_cn: '凤蝶科',
+      family_en: 'Swallowtail family',
+      family_latin: 'Papilionidae',
+      summary: '后翅尾突和鲜明翅纹很典型，是蝶类识别中的经典代表类群。',
+      cover_image: '/insect-taxonomy/papilio-machaon.jpg',
+      species: [
+        {
+          name_cn: '凤蝶',
+          name_en: 'Old World Swallowtail',
+          latin: 'Papilio machaon',
+          image: '/insect-taxonomy/papilio-machaon.jpg',
+          url: 'https://en.wikipedia.org/wiki/Papilio_machaon',
+        },
+      ],
+    },
+    {
+      id: 'saturniidae',
+      family_cn: '天蚕蛾科',
+      family_en: 'Giant silk moths',
+      family_latin: 'Saturniidae',
+      summary: '体型巨大、翅面图案丰富，是蛾类展示中非常吸睛的一支。',
+      cover_image: '/insect-taxonomy/attacus-atlas.jpg',
+      species: [
+        {
+          name_cn: '阿特拉斯天蚕蛾',
+          name_en: 'Atlas Moth',
+          latin: 'Attacus atlas',
+          image: '/insect-taxonomy/attacus-atlas.jpg',
+          url: 'https://en.wikipedia.org/wiki/Attacus_atlas',
+        },
+      ],
+    },
+  ],
+  diptera: [
+    {
+      id: 'muscidae',
+      family_cn: '蝇科',
+      family_en: 'Housefly family',
+      family_latin: 'Muscidae',
+      summary: '后翅退化为平衡棒，飞行灵活，是城市和农田都很常见的双翅类群。',
+      cover_image: '/insect-taxonomy/musca-domestica.jpg',
+      species: [
+        {
+          name_cn: '家蝇',
+          name_en: 'Housefly',
+          latin: 'Musca domestica',
+          image: '/insect-taxonomy/musca-domestica.jpg',
+          url: 'https://en.wikipedia.org/wiki/Musca_domestica',
+        },
+      ],
+    },
+    {
+      id: 'culicidae',
+      family_cn: '蚊科',
+      family_en: 'Mosquito family',
+      family_latin: 'Culicidae',
+      summary: '雌虫多有吸血行为，在医学和公共卫生上具有重要意义。',
+      cover_image: '/insect-taxonomy/aedes-aegypti.jpg',
+      species: [
+        {
+          name_cn: '埃及伊蚊',
+          name_en: 'Yellow Fever Mosquito',
+          latin: 'Aedes aegypti',
+          image: '/insect-taxonomy/aedes-aegypti.jpg',
+          url: 'https://en.wikipedia.org/wiki/Aedes_aegypti',
+        },
+      ],
+    },
+  ],
+  hymenoptera: [
+    {
+      id: 'apidae',
+      family_cn: '蜜蜂类群',
+      family_en: 'Honey bee lineage',
+      family_latin: 'Apidae',
+      summary: '典型授粉昆虫，胸部绒毛较多，和花部环境关系最紧密。',
+      cover_image: '/insect-taxonomy/apis-mellifera.jpg',
+      species: [
+        {
+          name_cn: '西方蜜蜂',
+          name_en: 'Western Honey Bee',
+          latin: 'Apis mellifera',
+          image: '/insect-taxonomy/apis-mellifera.jpg',
+          url: 'https://en.wikipedia.org/wiki/Apis_mellifera',
+        },
+      ],
+    },
+    {
+      id: 'bombini',
+      family_cn: '熊蜂类群',
+      family_en: 'Bumblebee lineage',
+      family_latin: 'Bombus',
+      summary: '体型厚实、绒毛更密，在低温或高纬环境中依然具有较强授粉能力。',
+      cover_image: '/insect-taxonomy/bombus-terrestris.jpg',
+      species: [
+        {
+          name_cn: '熊蜂',
+          name_en: 'Buff-tailed Bumblebee',
+          latin: 'Bombus terrestris',
+          image: '/insect-taxonomy/bombus-terrestris.jpg',
+          url: 'https://en.wikipedia.org/wiki/Bombus_terrestris',
+        },
+      ],
+    },
+  ],
+  trichoptera: [
+    {
+      id: 'psychomyiidae',
+      family_cn: '长角石蛾类群',
+      family_en: 'Long-horned caddisflies',
+      family_latin: 'Psychomyiidae',
+      summary: '幼虫常在石块或植被表面结丝筑巢，成虫外形与小型蛾类相近。',
+      cover_image: '/insect-taxonomy/tinodes-waeneri.jpg',
+      species: [
+        {
+          name_cn: '瓦纳丝石蛾',
+          name_en: 'Tinodes Caddisfly',
+          latin: 'Tinodes waeneri',
+          image: '/insect-taxonomy/tinodes-waeneri.jpg',
+          url: 'https://www.google.com/search?q=Tinodes+waeneri',
+        },
+      ],
+    },
+    {
+      id: 'case-making-caddisflies',
+      family_cn: '壳巢石蛾类群',
+      family_en: 'Case-making caddisflies',
+      family_latin: 'Conoesucidae',
+      summary: '幼虫会用细枝、砂粒和叶片搭建护壳，是溪流观察中很有辨识度的一类。',
+      cover_image: '/insect-taxonomy/pycnocentrodes-aeris.jpg',
+      species: [
+        {
+          name_cn: '风石蛾',
+          name_en: 'Aerial Caddisfly',
+          latin: 'Pycnocentrodes aeris',
+          image: '/insect-taxonomy/pycnocentrodes-aeris.jpg',
+          url: 'https://www.google.com/search?q=Pycnocentrodes+aeris',
+        },
+      ],
+    },
+  ],
+  siphonaptera: [
+    {
+      id: 'cat-fleas',
+      family_cn: '猫蚤类群',
+      family_en: 'Cat flea lineage',
+      family_latin: 'Pulicidae',
+      summary: '常见于猫狗等哺乳动物体表，是家居环境中最典型的外寄生蚤类。',
+      cover_image: '/insect-taxonomy/ctenocephalides-felis.jpg',
+      species: [
+        {
+          name_cn: '猫蚤',
+          name_en: 'Cat Flea',
+          latin: 'Ctenocephalides felis',
+          image: '/insect-taxonomy/ctenocephalides-felis.jpg',
+          url: 'https://en.wikipedia.org/wiki/Ctenocephalides_felis',
+        },
+      ],
+    },
+    {
+      id: 'human-fleas',
+      family_cn: '人蚤类群',
+      family_en: 'Human flea lineage',
+      family_latin: 'Pulicidae',
+      summary: '体侧扁、善跳跃，是卫生昆虫学里非常典型的一支外寄生昆虫。',
+      cover_image: '/insect-taxonomy/pulex-irritans.jpg',
+      species: [
+        {
+          name_cn: '人蚤',
+          name_en: 'Human Flea',
+          latin: 'Pulex irritans',
+          image: '/insect-taxonomy/pulex-irritans.jpg',
+          url: 'https://en.wikipedia.org/wiki/Pulex_irritans',
+        },
+      ],
+    },
+  ],
+}

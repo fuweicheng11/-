@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs and local runtime
+logs/
+*.log
+_tmp_verify_evidence/
+runtime/mysql/data/
+runtime/mysql/data_bad_restore/
+runtime/mysql/logs/
+runtime/mysql/tmp/
+runtime/mysql/mysql.pid
+runtime/mysql/app_db.json
+runtime/mysql/my.ini
+
+# Local AI secrets
+runtime/ai_config.json
+runtime/ai_config.local.json
+runtime/ai_config.override.json
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Model weights restored manually after clone
+runtime/CamouflageDriveQ/08/fusion_results/fusion_best.pth
+segmentation/models/MODEL06_RUN_best.pth
+_internal/**/*.pth
+
+# IDE / local
+.idea/
+.vscode/
+.sixth/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,17 @@
+Flask
+requests
+beautifulsoup4
+mysql-connector-python
+numpy
+opencv-python
+torch
+torchvision
+timm
+Pillow
+scipy
+einops
+easydict
+thop
+pyyaml
+gunicorn
+waitress

@@ -1,0 +1,7 @@
+{
+  "provider": "deepseek",
+  "api_base": "https://api.deepseek.com/chat/completions",
+  "model": "deepseek-chat",
+  "api_key": "",
+  "temperature": 0.4
+}

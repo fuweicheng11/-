@@ -1,22 +1,22 @@
 # 伪装昆虫识别平台源码交接说明
 
-这个仓库是我现在这套伪装昆虫识别平台的源码版。
+这个仓库是当前这套伪装昆虫识别平台的源码交接版。
 
-我先把最重要的话说前面：
+先说最关键的三件事：
 
-- GitHub 这里我只放源码，不放大模型权重，不放本地 MySQL 数据，不放真实 API Key。
-- 你如果想把项目直接跑起来，先去百度网盘把权重包拿下来，再按我下面的步骤做。
-- 当前版本已经去掉了老的 `CamouflageInsectWebDemo.exe` 依赖，现在分类和分割都在 Python 进程里跑。
+- GitHub 这里只放源码，不放模型权重、不放本地 MySQL 数据、不放真实 API Key。
+- 想把项目直接跑起来，先去百度网盘把权重包拿下来，再按下面的步骤部署。
+- 当前版本已经去掉了旧的 `CamouflageInsectWebDemo.exe` 依赖，现在分类和分割都在 Python 进程里运行。
 
-## 这个项目现在是干什么的
+## 项目现在做什么
 
-这是一个面向复杂自然背景的伪装昆虫识别 Web 平台，电脑端和手机端都能访问。
+这是一个面向复杂自然背景的伪装昆虫识别 Web 平台，支持电脑端和手机端访问。
 
-现在这套主链路是：
+当前主链路：
 
-`上传图片 -> 分割模型先提主体 -> 裁切主体 -> ConvNeXt + DINOv2 融合分类 -> 返回类别、证据图、科普信息`
+`上传图片 -> 分割模型提取主体 -> 裁切主体 -> ConvNeXt + DINOv2 融合分类 -> 返回类别、证据图、科普信息`
 
-除了识别本身，这个项目里还有这些功能：
+项目当前包含这些功能：
 
 - 结果页展示原图、分割图、热力图、定位框结果、局部热力图
 - 首页动态区
@@ -25,18 +25,18 @@
 - 管理员后台
 - DeepSeek 问答接口
 
-## 技术栈我也给你说清楚
+## 技术栈
 
 - 前端：Vue 3 + Vite + Element Plus
 - 后端：Flask
-- 分割模型：PyTorch 自定义分割网络，部署版编码骨干是 ResNet50
+- 分割模型：PyTorch 自定义分割网络，部署版编码骨干为 ResNet50
 - 分类模型：ConvNeXt-Base + DINOv2 + Gating Fusion
 - 数据存储：MySQL
-- 问答：DeepSeek 兼容接口，可不配
+- 问答：DeepSeek 兼容接口，可不配置
 
 ## GitHub 里有什么，没什么
 
-### 这个仓库里有的
+仓库内包含：
 
 - 完整前后端源码
 - 前端构建配置
@@ -45,7 +45,7 @@
 - 图鉴数据和业务文案
 - 分割与分类推理代码
 
-### 这个仓库里没有的
+仓库内不包含：
 
 - 分类权重 `runtime/CamouflageDriveQ/08/fusion_results/fusion_best.pth`
 - 分割权重 `segmentation/models/MODEL06_RUN_best.pth`
@@ -55,18 +55,18 @@
 - `frontend/node_modules`
 - `frontend/dist`
 
-所以你如果刚 clone 下来，不能指望它“裸跑就识别”，权重必须自己补回来。
+所以刚 clone 下来时，不能指望项目裸跑就能识别，权重必须先补回来。
 
-## 权重包去哪里拿
+## 权重包获取方式
 
-我已经把部署必需的大文件单独放到百度网盘了。
+部署必需的大文件已经单独放到百度网盘。
 
 - 百度网盘链接：`https://pan.baidu.com/s/1-6FF0QzGhZPsVbIX7L2Rfw?pwd=1234`
 - 提取码：`1234`
 
-你下载下来后，直接把压缩包解压到项目根目录。压缩包里我已经把相对路径摆好了，正常情况下你不用自己手动搬文件。
+下载后，直接把压缩包解压到项目根目录。压缩包里已经保留了正确的相对路径，正常情况下不需要手动搬文件。
 
-解压后你至少要确认这两个文件在：
+解压后至少确认这两个文件存在：
 
 ```text
 runtime/CamouflageDriveQ/08/fusion_results/fusion_best.pth
@@ -82,7 +82,7 @@ segmentation/models/MODEL06_RUN_best.pth
 - `_internal/master/ConvNeXt-main/convnext_base_22k_224.pth`：当前部署版不是必需
 - `_internal/master/dinov2-main/dinov2_vitb14_reg4_pretrain.pth`：当前部署版不是必需
 
-## 你按这个顺序跑，基本不会出错
+## 推荐部署顺序
 
 ### 1. 克隆仓库
 
@@ -93,15 +93,15 @@ cd <repo-dir>
 
 ### 2. 先还原权重
 
-把百度网盘里的权重包解压到项目根目录，确认上面说的两个 `.pth` 文件都在。
+把百度网盘里的权重包解压到项目根目录，确认上面那两个 `.pth` 文件都在。
 
-### 3. 装 Python 依赖
+### 3. 安装 Python 依赖
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. 装前端依赖并构建
+### 4. 安装前端依赖并构建
 
 ```bash
 cd frontend
@@ -110,9 +110,9 @@ npm run build
 cd ..
 ```
 
-### 5. 配数据库
+### 5. 配置数据库
 
-默认数据库配置就是下面这套：
+默认数据库配置如下：
 
 - host：`127.0.0.1`
 - port：`3306`
@@ -120,10 +120,10 @@ cd ..
 - password：`Camouflage@2026`
 - database：`camouflage_insect_app`
 
-你有两种搞法：
+有两种方式：
 
-1. Windows 本地直接跑 `launch_mini_app.bat`，脚本会尝试帮你把本地 MySQL 初始化好。
-2. 你自己手动建库，然后把 `runtime/mysql/app_db.example.json` 复制成 `runtime/mysql/app_db.json`，把里面参数改成你自己的。
+1. Windows 本地直接运行 `launch_mini_app.bat`，脚本会尝试自动初始化本地 MySQL。
+2. 手动创建数据库，然后把 `runtime/mysql/app_db.example.json` 复制成 `runtime/mysql/app_db.json`，再把参数改成自己的。
 
 也可以直接用环境变量覆盖：
 
@@ -133,14 +133,14 @@ cd ..
 - `CAMOUFLAGE_DB_PASSWORD`
 - `CAMOUFLAGE_DB_NAME`
 
-### 6. AI 问答想用就配，不想用可以先不配
+### 6. AI 问答按需配置
 
-这个项目就算没有 AI Key，主识别链路还是能跑，只是问答会退化。
+不配置 AI Key，主识别链路仍然能跑，只是问答会退化。
 
-如果你要配：
+如果需要配置：
 
 1. 把 `runtime/ai_config.example.json` 复制成 `runtime/ai_config.json`
-2. 把你自己的 Key 填进去
+2. 填入自己的 Key
 
 也可以直接用环境变量：
 
@@ -151,9 +151,9 @@ cd ..
 - `DEEPSEEK_API_KEY`
 - `CAMOUFLAGE_AI_TEMPERATURE`
 
-## 启动方式我给你分开说
+## 启动方式
 
-### Windows 本地最省事的启动方式
+### Windows 本地最省事的方式
 
 ```bat
 launch_mini_app.bat
@@ -171,7 +171,7 @@ http://127.0.0.1:7863
 stop_mini_app.bat
 ```
 
-如果你想临时给手机访问地址：
+如果想临时生成手机访问地址：
 
 ```bat
 launch_phone_access.bat
@@ -195,9 +195,9 @@ gunicorn -w 1 -b 127.0.0.1:7863 app:app
 waitress-serve --host=127.0.0.1 --port=7863 app:app
 ```
 
-生产环境建议你自己再挂 Nginx 做反代。
+生产环境建议自行挂 Nginx 做反向代理。
 
-## 如果你要改前端
+## 前端开发
 
 开发模式：
 
@@ -207,25 +207,25 @@ npm install
 npm run dev
 ```
 
-Vite 会把 `/api` 这些请求代理到 `http://127.0.0.1:7863`。
+Vite 会把 `/api` 等请求代理到 `http://127.0.0.1:7863`。
 
-## 常见坑我提前帮你踩掉
+## 常见问题
 
-### 1. 页面能开，识别报错
+### 1. 页面能打开，但识别报错
 
-先检查这几个最容易错的：
+先检查：
 
-- `fusion_best.pth` 放没放对
-- `MODEL06_RUN_best.pth` 放没放对
+- `fusion_best.pth` 有没有放对位置
+- `MODEL06_RUN_best.pth` 有没有放对位置
 - Python 依赖有没有装全
 
-### 2. 页面数据加载失败，提示 MySQL 连接不上
+### 2. 页面数据加载失败，提示 MySQL 连不上
 
-优先看：
+优先检查：
 
-- MySQL 起没起
-- `runtime/mysql/app_db.json` 对不对
-- `camouflage_insect_app` 这个库在不在
+- MySQL 是否启动
+- `runtime/mysql/app_db.json` 是否正确
+- `camouflage_insect_app` 这个库是否存在
 
 Windows 本地优先直接试：
 
@@ -235,11 +235,11 @@ launch_mini_app.bat
 
 ### 3. 问答功能不能用
 
-一般就是没配 AI Key。这个不影响识别主链路。
+大多数情况是没有配置 AI Key。这个问题不影响识别主链路。
 
-### 4. 你想把仓库重新推 GitHub，但是怕把大文件带上去
+### 4. 想重新推 GitHub，但担心把大文件带上去
 
-不用担心，我已经在 `.gitignore` 里把这些排掉了：
+当前 `.gitignore` 已经排掉以下内容：
 
 - 模型权重
 - MySQL 数据目录
@@ -248,9 +248,9 @@ launch_mini_app.bat
 - `node_modules`
 - `frontend/dist`
 
-正常按现在这个仓库结构推，不会把那几个大东西带上去。
+正常按当前仓库结构推送，不会把这些大文件一起带上去。
 
-## 目录结构你大概认一下
+## 目录结构
 
 ```text
 .
@@ -277,22 +277,22 @@ launch_mini_app.bat
 └─ stop_mini_app.bat
 ```
 
-## 最后我再强调一遍
+## 最后再强调一遍
 
-这个仓库现在适合做三件事：
+这个仓库现在适合三种用途：
 
 - 源码公开托管
 - 交接给下一个人继续改
 - 拉到新机器上重新部署
 
-你如果真要复现完整效果，正确顺序就五步：
+如果要复现完整效果，顺序就是这五步：
 
 1. clone 源码
 2. 解压百度网盘里的权重包
-3. 装 Python / Node.js / MySQL
+3. 安装 Python / Node.js / MySQL
 4. 构建前端
 5. 启动项目
 
-别跳步骤，尤其别忘了先补权重。
+不要跳步骤，尤其不要忘记先补权重。
 
-按我这个 README 走，正常就能把项目拉起来。
+按这份 README 操作，正常可以把项目拉起来。

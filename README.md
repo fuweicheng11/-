@@ -232,19 +232,6 @@ launch_mini_app.bat
 
 大多数情况是没有配置 AI Key。这个问题不影响识别主链路。
 
-### 4. 想重新推 GitHub，但担心把大文件带上去
-
-当前 `.gitignore` 已经排掉以下内容：
-
-- 模型权重
-- MySQL 数据目录
-- 日志
-- 本地 AI 配置
-- `node_modules`
-- `frontend/dist`
-
-正常按当前仓库结构推送，不会把这些大文件一起带上去。
-
 ## 目录结构
 
 ```text
